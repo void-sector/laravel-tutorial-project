@@ -30,6 +30,16 @@ class ArticlesController extends Controller
             'article' => Article::findOrFail($id)
         ]);
     }
+
+    
+    /**
+     * View a list of articles
+     * @return type
+     */
+    public function create()
+    {
+        return view('articles.create');
+    }
     
     
     /**
