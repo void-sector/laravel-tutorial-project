@@ -14,8 +14,26 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return view('articles', [
+        return view('articles.index', [
             'articles' => Article::all()
+        ]);
+    }
+
+    
+    /**
+     * View a list of articles
+     * @return type
+     */
+    public function view($id)
+    {
+        $article = Article::find($id);
+        
+        if (null === $article) {
+            abort(404);
+        }
+        
+        return view('articles.view', [
+            'article' => Article::find($id)
         ]);
     }
     

@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@index');
 Route::get('contact', 'ContactController@index');
 
 Route::get('articles', 'ArticlesController@index');
+Route::get('articles/{id}', 'ArticlesController@view');
 Route::get('articles/populate', 'ArticlesController@populate');
 
 Route::controllers([
