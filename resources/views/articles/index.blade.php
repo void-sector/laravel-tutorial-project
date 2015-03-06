@@ -6,7 +6,7 @@
     @if (count($articles))
     <ul>
         @foreach ($articles as $article)
-        <li>{{ $article->title }}</li>   
+        <li><a href="/articles/{{ $article->id }}" title="">{{ $article->title }}</a></li>   
         @endforeach
     </ul>
     @endif

@@ -26,14 +26,8 @@ class ArticlesController extends Controller
      */
     public function view($id)
     {
-        $article = Article::find($id);
-        
-        if (null === $article) {
-            abort(404);
-        }
-        
         return view('articles.view', [
-            'article' => Article::find($id)
+            'article' => Article::findOrFail($id)
         ]);
     }
     
