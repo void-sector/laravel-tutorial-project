@@ -6,6 +6,15 @@
     <h1>Write a new Article</h1>
     
     <hr />
+
+    
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif    
     
 
     {!! Form::open(['url' => 'articles']) !!}
@@ -28,14 +37,5 @@
             {!! Form::submit('Add Article', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     {!! Form::close() !!}
-    
-    
-    @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
 
 @stop
