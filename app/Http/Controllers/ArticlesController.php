@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Controllers\Controller;
-use Request;
-
+use App\Http\Requests\CreateArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -17,7 +16,7 @@ class ArticlesController extends Controller
     public function index()
     {
         return view('articles.index', [
-            'articles' => Article::all()
+            'articles' => Article::latest('id')->get()
         ]);
     }
 
@@ -44,32 +43,18 @@ class ArticlesController extends Controller
     }
     
     
-    
-    public function store()
+    /**
+     * Store the newly created article
+     * 
+     * @param CreateArticleRequest $request
+     * @return void
+     */
+    public function store(CreateArticleRequest $request)
     {
-        $input = Request::all();
-        
         Article::create(
-            Request::all()
+            $request->all()
         );
-        
         
         return redirect('articles');
     }
-    
-    
-    /**
-     * Populate Articles
-     */
-//    public function populate()
-//    {
-//        $article = new Article();
-//        
-//        $article->title = 'article title';
-//        $article->body = 'some big ass test text';
-//        $article->intro = 'intro text';
-//        $article->updated_at = \Carbon\Carbon::now();
-//        
-//        $article->save();
-//    }
 }
